@@ -1,0 +1,31 @@
+language: generic
+sudo: required
+dist: trusty
+
+os:
+  - linux
+
+env:
+  global:
+    - DISPLAY=:99.0
+
+before_install:
+  - Xvfb $DISPLAY &
+  - wget https://netcologne.dl.sourceforge.net/project/lazarus/Lazarus%20Linux%20amd64%20DEB/Lazarus%202.0.2/fpc-laz_3.0.4-1_amd64.deb
+  - wget https://netcologne.dl.sourceforge.net/project/lazarus/Lazarus%20Linux%20amd64%20DEB/Lazarus%202.0.2/fpc-src_3.0.4-2_amd64.deb
+  - wget https://netcologne.dl.sourceforge.net/project/lazarus/Lazarus%20Linux%20amd64%20DEB/Lazarus%202.0.2/lazarus-project_2.0.2-0_amd64.deb
+install:
+  - sudo apt-get install libgtk2.0-dev
+  - sudo dpkg -i *.deb
+
+build:
+  - lazbuild pck/paxtypes_package.lpk
+  - lazbuild pck/Tests.lpr
+test:
+  - ls -1 bin/*
+  - ./bin/test/x86_64/Tests -a --format=plain
+
+notifications:
+  email:
+    on_success: false
+    on_failure: change
