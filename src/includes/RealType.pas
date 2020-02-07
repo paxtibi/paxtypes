@@ -1,11 +1,11 @@
 unit RealType;
 interface
 uses
-  Classes, SysUtils;
+  Interfaces, Classes, SysUtils;
 type
   { IReal }
 
-  IReal = interface
+  IReal = interface(ISerializable)
     function Getvalue: Real;
     procedure Setvalue(AValue: Real);
     property value : Real read Getvalue write Setvalue;
@@ -25,7 +25,7 @@ Uses
 type
    { TReal }
 
-  TReal = class(TInterfacedObject, IReal)
+  TReal = class(TInterfacedObject, IReal,ISerializable)
   private
     function GetValue: Real;
     procedure SetValue(AValue: Real);

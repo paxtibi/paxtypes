@@ -1,11 +1,11 @@
 unit SingleType;
 interface
 uses
-  Classes, SysUtils;
+  Interfaces, Classes, SysUtils;
 type
   { ISingle }
 
-  ISingle = interface
+  ISingle = interface(ISerializable)
     function Getvalue: Single;
     procedure Setvalue(AValue: Single);
     property value : Single read Getvalue write Setvalue;
@@ -25,7 +25,7 @@ Uses
 type
    { TSingle }
 
-  TSingle = class(TInterfacedObject, ISingle)
+  TSingle = class(TInterfacedObject, ISingle,ISerializable)
   private
     function GetValue: Single;
     procedure SetValue(AValue: Single);

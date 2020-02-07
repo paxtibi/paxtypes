@@ -1,11 +1,11 @@
 unit CardinalType;
 interface
 uses
-  Classes, SysUtils;
+  Interfaces, Classes, SysUtils;
 type
   { ICardinal }
 
-  ICardinal = interface
+  ICardinal = interface(ISerializable)
     function Getvalue: Cardinal;
     procedure Setvalue(AValue: Cardinal);
     property value : Cardinal read Getvalue write Setvalue;
@@ -25,7 +25,7 @@ Uses
 type
    { TCardinal }
 
-  TCardinal = class(TInterfacedObject, ICardinal)
+  TCardinal = class(TInterfacedObject, ICardinal,ISerializable)
   private
     function GetValue: Cardinal;
     procedure SetValue(AValue: Cardinal);

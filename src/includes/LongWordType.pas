@@ -1,11 +1,11 @@
 unit LongWordType;
 interface
 uses
-  Classes, SysUtils;
+  Interfaces, Classes, SysUtils;
 type
   { ILongWord }
 
-  ILongWord = interface
+  ILongWord = interface(ISerializable)
     function Getvalue: LongWord;
     procedure Setvalue(AValue: LongWord);
     property value : LongWord read Getvalue write Setvalue;
@@ -25,7 +25,7 @@ Uses
 type
    { TLongWord }
 
-  TLongWord = class(TInterfacedObject, ILongWord)
+  TLongWord = class(TInterfacedObject, ILongWord,ISerializable)
   private
     function GetValue: LongWord;
     procedure SetValue(AValue: LongWord);

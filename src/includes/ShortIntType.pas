@@ -1,11 +1,11 @@
 unit ShortIntType;
 interface
 uses
-  Classes, SysUtils;
+  Interfaces, Classes, SysUtils;
 type
   { IShortInt }
 
-  IShortInt = interface
+  IShortInt = interface(ISerializable)
     function Getvalue: ShortInt;
     procedure Setvalue(AValue: ShortInt);
     property value : ShortInt read Getvalue write Setvalue;
@@ -25,7 +25,7 @@ Uses
 type
    { TShortInt }
 
-  TShortInt = class(TInterfacedObject, IShortInt)
+  TShortInt = class(TInterfacedObject, IShortInt,ISerializable)
   private
     function GetValue: ShortInt;
     procedure SetValue(AValue: ShortInt);

@@ -1,11 +1,11 @@
 unit WordType;
 interface
 uses
-  Classes, SysUtils;
+  Interfaces, Classes, SysUtils;
 type
   { IWord }
 
-  IWord = interface
+  IWord = interface(ISerializable)
     function Getvalue: Word;
     procedure Setvalue(AValue: Word);
     property value : Word read Getvalue write Setvalue;
@@ -25,7 +25,7 @@ Uses
 type
    { TWord }
 
-  TWord = class(TInterfacedObject, IWord)
+  TWord = class(TInterfacedObject, IWord,ISerializable)
   private
     function GetValue: Word;
     procedure SetValue(AValue: Word);

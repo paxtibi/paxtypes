@@ -1,11 +1,11 @@
 unit ByteType;
 interface
 uses
-  Classes, SysUtils;
+  Interfaces, Classes, SysUtils;
 type
   { IByte }
 
-  IByte = interface
+  IByte = interface(ISerializable)
     function Getvalue: Byte;
     procedure Setvalue(AValue: Byte);
     property value : Byte read Getvalue write Setvalue;
@@ -25,7 +25,7 @@ Uses
 type
    { TByte }
 
-  TByte = class(TInterfacedObject, IByte)
+  TByte = class(TInterfacedObject, IByte,ISerializable)
   private
     function GetValue: Byte;
     procedure SetValue(AValue: Byte);

@@ -1,11 +1,11 @@
 unit QWordType;
 interface
 uses
-  Classes, SysUtils;
+  Interfaces, Classes, SysUtils;
 type
   { IQWord }
 
-  IQWord = interface
+  IQWord = interface(ISerializable)
     function Getvalue: QWord;
     procedure Setvalue(AValue: QWord);
     property value : QWord read Getvalue write Setvalue;
@@ -25,7 +25,7 @@ Uses
 type
    { TQWord }
 
-  TQWord = class(TInterfacedObject, IQWord)
+  TQWord = class(TInterfacedObject, IQWord,ISerializable)
   private
     function GetValue: QWord;
     procedure SetValue(AValue: QWord);

@@ -1,11 +1,11 @@
 unit Int64Type;
 interface
 uses
-  Classes, SysUtils;
+  Interfaces, Classes, SysUtils;
 type
   { IInt64 }
 
-  IInt64 = interface
+  IInt64 = interface(ISerializable)
     function Getvalue: Int64;
     procedure Setvalue(AValue: Int64);
     property value : Int64 read Getvalue write Setvalue;
@@ -25,7 +25,7 @@ Uses
 type
    { TInt64 }
 
-  TInt64 = class(TInterfacedObject, IInt64)
+  TInt64 = class(TInterfacedObject, IInt64,ISerializable)
   private
     function GetValue: Int64;
     procedure SetValue(AValue: Int64);

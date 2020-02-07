@@ -1,11 +1,11 @@
 unit CompType;
 interface
 uses
-  Classes, SysUtils;
+  Interfaces, Classes, SysUtils;
 type
   { IComp }
 
-  IComp = interface
+  IComp = interface(ISerializable)
     function Getvalue: Comp;
     procedure Setvalue(AValue: Comp);
     property value : Comp read Getvalue write Setvalue;
@@ -25,7 +25,7 @@ Uses
 type
    { TComp }
 
-  TComp = class(TInterfacedObject, IComp)
+  TComp = class(TInterfacedObject, IComp,ISerializable)
   private
     function GetValue: Comp;
     procedure SetValue(AValue: Comp);

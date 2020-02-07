@@ -1,11 +1,11 @@
 unit ExtendedType;
 interface
 uses
-  Classes, SysUtils;
+  Interfaces, Classes, SysUtils;
 type
   { IExtended }
 
-  IExtended = interface
+  IExtended = interface(ISerializable)
     function Getvalue: Extended;
     procedure Setvalue(AValue: Extended);
     property value : Extended read Getvalue write Setvalue;
@@ -25,7 +25,7 @@ Uses
 type
    { TExtended }
 
-  TExtended = class(TInterfacedObject, IExtended)
+  TExtended = class(TInterfacedObject, IExtended,ISerializable)
   private
     function GetValue: Extended;
     procedure SetValue(AValue: Extended);

@@ -1,11 +1,11 @@
 unit LongIntType;
 interface
 uses
-  Classes, SysUtils;
+  Interfaces, Classes, SysUtils;
 type
   { ILongInt }
 
-  ILongInt = interface
+  ILongInt = interface(ISerializable)
     function Getvalue: LongInt;
     procedure Setvalue(AValue: LongInt);
     property value : LongInt read Getvalue write Setvalue;
@@ -25,7 +25,7 @@ Uses
 type
    { TLongInt }
 
-  TLongInt = class(TInterfacedObject, ILongInt)
+  TLongInt = class(TInterfacedObject, ILongInt,ISerializable)
   private
     function GetValue: LongInt;
     procedure SetValue(AValue: LongInt);

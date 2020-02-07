@@ -1,11 +1,11 @@
 unit UInt16Type;
 interface
 uses
-  Classes, SysUtils;
+  Interfaces, Classes, SysUtils;
 type
   { IUInt16 }
 
-  IUInt16 = interface
+  IUInt16 = interface(ISerializable)
     function Getvalue: UInt16;
     procedure Setvalue(AValue: UInt16);
     property value : UInt16 read Getvalue write Setvalue;
@@ -25,7 +25,7 @@ Uses
 type
    { TUInt16 }
 
-  TUInt16 = class(TInterfacedObject, IUInt16)
+  TUInt16 = class(TInterfacedObject, IUInt16,ISerializable)
   private
     function GetValue: UInt16;
     procedure SetValue(AValue: UInt16);

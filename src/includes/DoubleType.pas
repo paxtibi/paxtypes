@@ -1,11 +1,11 @@
 unit DoubleType;
 interface
 uses
-  Classes, SysUtils;
+  Interfaces, Classes, SysUtils;
 type
   { IDouble }
 
-  IDouble = interface
+  IDouble = interface(ISerializable)
     function Getvalue: Double;
     procedure Setvalue(AValue: Double);
     property value : Double read Getvalue write Setvalue;
@@ -25,7 +25,7 @@ Uses
 type
    { TDouble }
 
-  TDouble = class(TInterfacedObject, IDouble)
+  TDouble = class(TInterfacedObject, IDouble,ISerializable)
   private
     function GetValue: Double;
     procedure SetValue(AValue: Double);

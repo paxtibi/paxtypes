@@ -1,11 +1,11 @@
 unit Int8Type;
 interface
 uses
-  Classes, SysUtils;
+  Interfaces, Classes, SysUtils;
 type
   { IInt8 }
 
-  IInt8 = interface
+  IInt8 = interface(ISerializable)
     function Getvalue: Int8;
     procedure Setvalue(AValue: Int8);
     property value : Int8 read Getvalue write Setvalue;
@@ -25,7 +25,7 @@ Uses
 type
    { TInt8 }
 
-  TInt8 = class(TInterfacedObject, IInt8)
+  TInt8 = class(TInterfacedObject, IInt8,ISerializable)
   private
     function GetValue: Int8;
     procedure SetValue(AValue: Int8);

@@ -1,11 +1,11 @@
 unit SmallIntType;
 interface
 uses
-  Classes, SysUtils;
+  Interfaces, Classes, SysUtils;
 type
   { ISmallInt }
 
-  ISmallInt = interface
+  ISmallInt = interface(ISerializable)
     function Getvalue: SmallInt;
     procedure Setvalue(AValue: SmallInt);
     property value : SmallInt read Getvalue write Setvalue;
@@ -25,7 +25,7 @@ Uses
 type
    { TSmallInt }
 
-  TSmallInt = class(TInterfacedObject, ISmallInt)
+  TSmallInt = class(TInterfacedObject, ISmallInt,ISerializable)
   private
     function GetValue: SmallInt;
     procedure SetValue(AValue: SmallInt);

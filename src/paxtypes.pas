@@ -9,6 +9,7 @@ interface
 
 uses
   Classes, SysUtils,
+  interfaces,
   Int8Type, UInt8Type, Int16Type, UInt16Type, Int32Type, UInt32Type, Int64Type, UInt64Type, ShortIntType, SmallIntType, IntegerType, NativeIntType, LongIntType, ByteType, WordType, NativeUIntType, DWordType, CardinalType, LongWordType, QWordType, SingleType, RealType, DoubleType, ExtendedType, CompType, CurrencyType;
 
 type
@@ -45,6 +46,9 @@ type
   ENullPointerException = class(Exception)
 
   end;
+
+  ISerializable = interfaces.ISerializable;
+  ICloneable    = interfaces.IClonable;
 
 
 function itoa(Value: Uint64; radix: TRadix; maxLength: byte = 8): string;

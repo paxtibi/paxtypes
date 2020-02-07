@@ -1,11 +1,11 @@
 unit IntegerType;
 interface
 uses
-  Classes, SysUtils;
+  Interfaces, Classes, SysUtils;
 type
   { IInteger }
 
-  IInteger = interface
+  IInteger = interface(ISerializable)
     function Getvalue: Integer;
     procedure Setvalue(AValue: Integer);
     property value : Integer read Getvalue write Setvalue;
@@ -25,7 +25,7 @@ Uses
 type
    { TInteger }
 
-  TInteger = class(TInterfacedObject, IInteger)
+  TInteger = class(TInterfacedObject, IInteger,ISerializable)
   private
     function GetValue: Integer;
     procedure SetValue(AValue: Integer);

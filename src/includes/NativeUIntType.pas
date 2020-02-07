@@ -1,11 +1,11 @@
 unit NativeUIntType;
 interface
 uses
-  Classes, SysUtils;
+  Interfaces, Classes, SysUtils;
 type
   { INativeUInt }
 
-  INativeUInt = interface
+  INativeUInt = interface(ISerializable)
     function Getvalue: NativeUInt;
     procedure Setvalue(AValue: NativeUInt);
     property value : NativeUInt read Getvalue write Setvalue;
@@ -25,7 +25,7 @@ Uses
 type
    { TNativeUInt }
 
-  TNativeUInt = class(TInterfacedObject, INativeUInt)
+  TNativeUInt = class(TInterfacedObject, INativeUInt,ISerializable)
   private
     function GetValue: NativeUInt;
     procedure SetValue(AValue: NativeUInt);

@@ -1,11 +1,11 @@
 unit CurrencyType;
 interface
 uses
-  Classes, SysUtils;
+  Interfaces, Classes, SysUtils;
 type
   { ICurrency }
 
-  ICurrency = interface
+  ICurrency = interface(ISerializable)
     function Getvalue: Currency;
     procedure Setvalue(AValue: Currency);
     property value : Currency read Getvalue write Setvalue;
@@ -25,7 +25,7 @@ Uses
 type
    { TCurrency }
 
-  TCurrency = class(TInterfacedObject, ICurrency)
+  TCurrency = class(TInterfacedObject, ICurrency,ISerializable)
   private
     function GetValue: Currency;
     procedure SetValue(AValue: Currency);

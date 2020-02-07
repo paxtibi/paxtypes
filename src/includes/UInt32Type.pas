@@ -1,11 +1,11 @@
 unit UInt32Type;
 interface
 uses
-  Classes, SysUtils;
+  Interfaces, Classes, SysUtils;
 type
   { IUInt32 }
 
-  IUInt32 = interface
+  IUInt32 = interface(ISerializable)
     function Getvalue: UInt32;
     procedure Setvalue(AValue: UInt32);
     property value : UInt32 read Getvalue write Setvalue;
@@ -25,7 +25,7 @@ Uses
 type
    { TUInt32 }
 
-  TUInt32 = class(TInterfacedObject, IUInt32)
+  TUInt32 = class(TInterfacedObject, IUInt32,ISerializable)
   private
     function GetValue: UInt32;
     procedure SetValue(AValue: UInt32);
