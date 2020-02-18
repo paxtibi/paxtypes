@@ -5,7 +5,7 @@ unit DoubleTestCase;
 interface
 
 uses
-  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes,DoubleType;
+  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes;
 
 type
 

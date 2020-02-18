@@ -5,7 +5,7 @@ unit NativeUIntTestCase;
 interface
 
 uses
-  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes,NativeUIntType;
+  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes;
 
 type
 

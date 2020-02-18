@@ -5,7 +5,7 @@ unit IntegerTestCase;
 interface
 
 uses
-  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes,IntegerType;
+  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes;
 
 type
 

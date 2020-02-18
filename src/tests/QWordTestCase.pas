@@ -5,7 +5,7 @@ unit QWordTestCase;
 interface
 
 uses
-  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes,QWordType;
+  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes;
 
 type
 

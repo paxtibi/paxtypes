@@ -5,7 +5,7 @@ unit LongIntTestCase;
 interface
 
 uses
-  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes,LongIntType;
+  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes;
 
 type
 

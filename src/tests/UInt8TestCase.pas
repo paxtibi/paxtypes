@@ -5,7 +5,7 @@ unit UInt8TestCase;
 interface
 
 uses
-  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes,UInt8Type;
+  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes;
 
 type
 

@@ -5,7 +5,7 @@ unit CardinalTestCase;
 interface
 
 uses
-  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes,CardinalType;
+  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes;
 
 type
 

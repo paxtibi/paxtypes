@@ -5,7 +5,7 @@ unit Int32TestCase;
 interface
 
 uses
-  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes,Int32Type;
+  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes;
 
 type
 

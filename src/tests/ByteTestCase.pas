@@ -5,7 +5,7 @@ unit ByteTestCase;
 interface
 
 uses
-  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes,ByteType;
+  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes;
 
 type
 

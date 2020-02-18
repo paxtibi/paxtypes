@@ -5,7 +5,7 @@ unit DWordTestCase;
 interface
 
 uses
-  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes,DWordType;
+  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes;
 
 type
 

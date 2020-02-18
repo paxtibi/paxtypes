@@ -5,7 +5,7 @@ unit Int16TestCase;
 interface
 
 uses
-  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes,Int16Type;
+  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes;
 
 type
 

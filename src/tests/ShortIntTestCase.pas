@@ -5,7 +5,7 @@ unit ShortIntTestCase;
 interface
 
 uses
-  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes,ShortIntType;
+  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes;
 
 type
 

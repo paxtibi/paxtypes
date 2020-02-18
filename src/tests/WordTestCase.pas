@@ -5,7 +5,7 @@ unit WordTestCase;
 interface
 
 uses
-  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes,WordType;
+  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes;
 
 type
 

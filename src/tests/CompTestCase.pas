@@ -5,7 +5,7 @@ unit CompTestCase;
 interface
 
 uses
-  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes,CompType;
+  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes;
 
 type
 

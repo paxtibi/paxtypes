@@ -5,7 +5,7 @@ unit CurrencyTestCase;
 interface
 
 uses
-  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes,CurrencyType;
+  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes;
 
 type
 

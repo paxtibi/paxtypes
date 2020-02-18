@@ -5,7 +5,7 @@ unit SingleTestCase;
 interface
 
 uses
-  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes,SingleType;
+  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes;
 
 type
 

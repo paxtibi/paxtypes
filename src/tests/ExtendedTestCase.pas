@@ -5,7 +5,7 @@ unit ExtendedTestCase;
 interface
 
 uses
-  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes,ExtendedType;
+  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes;
 
 type
 

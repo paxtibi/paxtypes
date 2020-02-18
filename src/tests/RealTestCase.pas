@@ -5,7 +5,7 @@ unit RealTestCase;
 interface
 
 uses
-  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes,RealType;
+  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes;
 
 type
 

@@ -13,123 +13,11 @@
         <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
       </SearchPaths>
     </CompilerOptions>
-    <Files Count="29">
+    <Files Count="1">
       <Item1>
         <Filename Value="..\src\paxtypes.pas"/>
         <UnitName Value="paxtypes"/>
       </Item1>
-      <Item2>
-        <Filename Value="..\src\paxinterfaces.pas"/>
-        <UnitName Value="paxInterfaces"/>
-      </Item2>
-      <Item3>
-        <Filename Value="..\src\includes\ByteType.pas"/>
-        <UnitName Value="ByteType"/>
-      </Item3>
-      <Item4>
-        <Filename Value="..\src\includes\CardinalType.pas"/>
-        <UnitName Value="CardinalType"/>
-      </Item4>
-      <Item5>
-        <Filename Value="..\src\includes\CompType.pas"/>
-        <UnitName Value="CompType"/>
-      </Item5>
-      <Item6>
-        <Filename Value="..\src\includes\CurrencyType.pas"/>
-        <UnitName Value="CurrencyType"/>
-      </Item6>
-      <Item7>
-        <Filename Value="..\src\includes\DoubleType.pas"/>
-        <UnitName Value="DoubleType"/>
-      </Item7>
-      <Item8>
-        <Filename Value="..\src\includes\DWordType.pas"/>
-        <UnitName Value="DWordType"/>
-      </Item8>
-      <Item9>
-        <Filename Value="..\src\includes\ExtendedType.pas"/>
-        <UnitName Value="ExtendedType"/>
-      </Item9>
-      <Item10>
-        <Filename Value="..\src\includes\Int8Type.pas"/>
-        <UnitName Value="Int8Type"/>
-      </Item10>
-      <Item11>
-        <Filename Value="..\src\includes\Int16Type.pas"/>
-        <UnitName Value="Int16Type"/>
-      </Item11>
-      <Item12>
-        <Filename Value="..\src\includes\Int32Type.pas"/>
-        <UnitName Value="Int32Type"/>
-      </Item12>
-      <Item13>
-        <Filename Value="..\src\includes\Int64Type.pas"/>
-        <UnitName Value="Int64Type"/>
-      </Item13>
-      <Item14>
-        <Filename Value="..\src\includes\IntegerType.pas"/>
-        <UnitName Value="IntegerType"/>
-      </Item14>
-      <Item15>
-        <Filename Value="..\src\includes\LongIntType.pas"/>
-        <UnitName Value="LongIntType"/>
-      </Item15>
-      <Item16>
-        <Filename Value="..\src\includes\LongWordType.pas"/>
-        <UnitName Value="LongWordType"/>
-      </Item16>
-      <Item17>
-        <Filename Value="..\src\includes\NativeIntType.pas"/>
-        <UnitName Value="NativeIntType"/>
-      </Item17>
-      <Item18>
-        <Filename Value="..\src\includes\NativeUIntType.pas"/>
-        <UnitName Value="NativeUIntType"/>
-      </Item18>
-      <Item19>
-        <Filename Value="..\src\includes\QWordType.pas"/>
-        <UnitName Value="QWordType"/>
-      </Item19>
-      <Item20>
-        <Filename Value="..\src\includes\RealType.pas"/>
-        <UnitName Value="RealType"/>
-      </Item20>
-      <Item21>
-        <Filename Value="..\src\includes\ShortIntType.pas"/>
-        <UnitName Value="ShortIntType"/>
-      </Item21>
-      <Item22>
-        <Filename Value="..\src\includes\SingleType.pas"/>
-        <UnitName Value="SingleType"/>
-      </Item22>
-      <Item23>
-        <Filename Value="..\src\includes\SmallIntType.pas"/>
-        <UnitName Value="SmallIntType"/>
-      </Item23>
-      <Item24>
-        <Filename Value="..\src\includes\UInt8Type.pas"/>
-        <UnitName Value="UInt8Type"/>
-      </Item24>
-      <Item25>
-        <Filename Value="..\src\includes\UInt16Type.pas"/>
-        <UnitName Value="UInt16Type"/>
-      </Item25>
-      <Item26>
-        <Filename Value="..\src\includes\UInt32Type.pas"/>
-        <UnitName Value="UInt32Type"/>
-      </Item26>
-      <Item27>
-        <Filename Value="..\src\includes\UInt64Type.pas"/>
-        <UnitName Value="UInt64Type"/>
-      </Item27>
-      <Item28>
-        <Filename Value="..\src\includes\WordType.pas"/>
-        <UnitName Value="WordType"/>
-      </Item28>
-      <Item29>
-        <Filename Value="..\src\includes\stringtype.pas"/>
-        <UnitName Value="stringtype"/>
-      </Item29>
     </Files>
     <RequiredPkgs Count="1">
       <Item1>
@@ -143,5 +31,8 @@
       <Version Value="2"/>
       <UseFileFilters Value="True"/>
     </PublishOptions>
+    <CustomOptions Items="ExternHelp" Version="2">
+      <_ExternHelp Items="Count"/>
+    </CustomOptions>
   </Package>
 </CONFIG>

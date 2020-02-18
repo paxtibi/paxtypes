@@ -5,7 +5,7 @@ unit LongWordTestCase;
 interface
 
 uses
-  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes,LongWordType;
+  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes;
 
 type
 

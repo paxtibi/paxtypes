@@ -5,7 +5,7 @@ unit SmallIntTestCase;
 interface
 
 uses
-  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes,SmallIntType;
+  Classes, SysUtils, fpcunit, testutils, testregistry, paxtypes;
 
 type
 
