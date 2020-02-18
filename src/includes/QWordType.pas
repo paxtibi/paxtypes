@@ -1,7 +1,7 @@
 unit QWordType;
 interface
 uses
-  Interfaces, Classes, SysUtils;
+  paxInterfaces, Classes, SysUtils;
 type
   { IQWord }
 
@@ -11,13 +11,13 @@ type
     property value : QWord read Getvalue write Setvalue;
   end;
 
-  operator := (aValue :  QWord) res:  IQWord;
-  operator Explicit(aValue :  QWord) res:  IQWord;
-  operator Explicit(aValue :  IQWord) res:  QWord;
-  operator + (const Left : IQWord;const right : IQWord) res:  QWord;
-  operator + (const Left : IQWord;const right : QWord) res:  QWord;
-  operator + (const Left : QWord;const right : IQWord) res:  QWord;
-  operator + (const Left : IQWord;const right : IQWord) res:  IQWord;
+  operator := (aValue :  QWord) :  IQWord;
+  operator Explicit(aValue :  QWord) :  IQWord;
+  operator Explicit(aValue :  IQWord) :  QWord;
+  operator + (const Left : IQWord;const right : IQWord) :  QWord;
+  operator + (const Left : IQWord;const right : QWord)  :  QWord;
+  operator + (const Left : QWord;const right : IQWord)  :  QWord;
+  operator + (const Left : IQWord;const right : IQWord) :  IQWord;
                              
 implementation
 Uses
@@ -37,42 +37,41 @@ type
   end;
 
 
-operator := (aValue: QWord)res: IQWord;
+operator := (aValue: QWord)        : IQWord;
 begin
   result := TQWord.Create(aValue);
 end;
 
-operator Explicit(aValue: QWord)res: IQWord;
+operator Explicit(aValue: QWord)    : IQWord;
 begin
   result := TQWord.Create(aValue);
 end;
 
-operator Explicit(aValue: IQWord)res: QWord;
+operator Explicit(aValue: IQWord)   : QWord;
 begin
   result := aValue.Value;
 end;
 
-operator+(const Left: IQWord; const right: IQWord) res: QWord;
+operator+(const Left: IQWord; const right: IQWord)    : QWord;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
-  res := left.value + right.value;
+  result := left.value + right.value;
 end;
-operator + (const Left : IQWord;const right : IQWord) res:  IQWord;
+operator + (const Left : IQWord;const right : IQWord) :  IQWord;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
-  res := left.value + right.value;
+  result := left.value + right.value;
 end;
 
-
-operator+(const Left: IQWord; const right: QWord)res: QWord;
+operator+(const Left: IQWord; const right: QWord)     : QWord;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
-  res := left.value + right;
+  result := left.value + right;
 end;
 
-operator+(const Left: QWord; const right: IQWord)res: QWord;
+operator+(const Left: QWord; const right: IQWord)     : QWord;
 begin
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
   result := left+ right.value;

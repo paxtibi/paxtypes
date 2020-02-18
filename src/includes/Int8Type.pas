@@ -1,7 +1,7 @@
 unit Int8Type;
 interface
 uses
-  Interfaces, Classes, SysUtils;
+  paxInterfaces, Classes, SysUtils;
 type
   { IInt8 }
 
@@ -11,13 +11,13 @@ type
     property value : Int8 read Getvalue write Setvalue;
   end;
 
-  operator := (aValue :  Int8) res:  IInt8;
-  operator Explicit(aValue :  Int8) res:  IInt8;
-  operator Explicit(aValue :  IInt8) res:  Int8;
-  operator + (const Left : IInt8;const right : IInt8) res:  Int8;
-  operator + (const Left : IInt8;const right : Int8) res:  Int8;
-  operator + (const Left : Int8;const right : IInt8) res:  Int8;
-  operator + (const Left : IInt8;const right : IInt8) res:  IInt8;
+  operator := (aValue :  Int8) :  IInt8;
+  operator Explicit(aValue :  Int8) :  IInt8;
+  operator Explicit(aValue :  IInt8) :  Int8;
+  operator + (const Left : IInt8;const right : IInt8) :  Int8;
+  operator + (const Left : IInt8;const right : Int8)  :  Int8;
+  operator + (const Left : Int8;const right : IInt8)  :  Int8;
+  operator + (const Left : IInt8;const right : IInt8) :  IInt8;
                              
 implementation
 Uses
@@ -37,42 +37,41 @@ type
   end;
 
 
-operator := (aValue: Int8)res: IInt8;
+operator := (aValue: Int8)        : IInt8;
 begin
   result := TInt8.Create(aValue);
 end;
 
-operator Explicit(aValue: Int8)res: IInt8;
+operator Explicit(aValue: Int8)    : IInt8;
 begin
   result := TInt8.Create(aValue);
 end;
 
-operator Explicit(aValue: IInt8)res: Int8;
+operator Explicit(aValue: IInt8)   : Int8;
 begin
   result := aValue.Value;
 end;
 
-operator+(const Left: IInt8; const right: IInt8) res: Int8;
+operator+(const Left: IInt8; const right: IInt8)    : Int8;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
-  res := left.value + right.value;
+  result := left.value + right.value;
 end;
-operator + (const Left : IInt8;const right : IInt8) res:  IInt8;
+operator + (const Left : IInt8;const right : IInt8) :  IInt8;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
-  res := left.value + right.value;
+  result := left.value + right.value;
 end;
 
-
-operator+(const Left: IInt8; const right: Int8)res: Int8;
+operator+(const Left: IInt8; const right: Int8)     : Int8;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
-  res := left.value + right;
+  result := left.value + right;
 end;
 
-operator+(const Left: Int8; const right: IInt8)res: Int8;
+operator+(const Left: Int8; const right: IInt8)     : Int8;
 begin
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
   result := left+ right.value;

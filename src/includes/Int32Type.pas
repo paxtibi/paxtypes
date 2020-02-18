@@ -1,7 +1,7 @@
 unit Int32Type;
 interface
 uses
-  Interfaces, Classes, SysUtils;
+  paxInterfaces, Classes, SysUtils;
 type
   { IInt32 }
 
@@ -11,13 +11,13 @@ type
     property value : Int32 read Getvalue write Setvalue;
   end;
 
-  operator := (aValue :  Int32) res:  IInt32;
-  operator Explicit(aValue :  Int32) res:  IInt32;
-  operator Explicit(aValue :  IInt32) res:  Int32;
-  operator + (const Left : IInt32;const right : IInt32) res:  Int32;
-  operator + (const Left : IInt32;const right : Int32) res:  Int32;
-  operator + (const Left : Int32;const right : IInt32) res:  Int32;
-  operator + (const Left : IInt32;const right : IInt32) res:  IInt32;
+  operator := (aValue :  Int32) :  IInt32;
+  operator Explicit(aValue :  Int32) :  IInt32;
+  operator Explicit(aValue :  IInt32) :  Int32;
+  operator + (const Left : IInt32;const right : IInt32) :  Int32;
+  operator + (const Left : IInt32;const right : Int32)  :  Int32;
+  operator + (const Left : Int32;const right : IInt32)  :  Int32;
+  operator + (const Left : IInt32;const right : IInt32) :  IInt32;
                              
 implementation
 Uses
@@ -37,42 +37,41 @@ type
   end;
 
 
-operator := (aValue: Int32)res: IInt32;
+operator := (aValue: Int32)        : IInt32;
 begin
   result := TInt32.Create(aValue);
 end;
 
-operator Explicit(aValue: Int32)res: IInt32;
+operator Explicit(aValue: Int32)    : IInt32;
 begin
   result := TInt32.Create(aValue);
 end;
 
-operator Explicit(aValue: IInt32)res: Int32;
+operator Explicit(aValue: IInt32)   : Int32;
 begin
   result := aValue.Value;
 end;
 
-operator+(const Left: IInt32; const right: IInt32) res: Int32;
+operator+(const Left: IInt32; const right: IInt32)    : Int32;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
-  res := left.value + right.value;
+  result := left.value + right.value;
 end;
-operator + (const Left : IInt32;const right : IInt32) res:  IInt32;
+operator + (const Left : IInt32;const right : IInt32) :  IInt32;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
-  res := left.value + right.value;
+  result := left.value + right.value;
 end;
 
-
-operator+(const Left: IInt32; const right: Int32)res: Int32;
+operator+(const Left: IInt32; const right: Int32)     : Int32;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
-  res := left.value + right;
+  result := left.value + right;
 end;
 
-operator+(const Left: Int32; const right: IInt32)res: Int32;
+operator+(const Left: Int32; const right: IInt32)     : Int32;
 begin
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
   result := left+ right.value;

@@ -1,4 +1,4 @@
-unit interfaces;
+unit paxInterfaces;
 
 {$mode objfpc}{$H+}
 

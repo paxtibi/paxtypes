@@ -1,7 +1,7 @@
 unit CurrencyType;
 interface
 uses
-  Interfaces, Classes, SysUtils;
+  paxInterfaces, Classes, SysUtils;
 type
   { ICurrency }
 
@@ -11,13 +11,13 @@ type
     property value : Currency read Getvalue write Setvalue;
   end;
 
-  operator := (aValue :  Currency) res:  ICurrency;
-  operator Explicit(aValue :  Currency) res:  ICurrency;
-  operator Explicit(aValue :  ICurrency) res:  Currency;
-  operator + (const Left : ICurrency;const right : ICurrency) res:  Currency;
-  operator + (const Left : ICurrency;const right : Currency) res:  Currency;
-  operator + (const Left : Currency;const right : ICurrency) res:  Currency;
-  operator + (const Left : ICurrency;const right : ICurrency) res:  ICurrency;
+  operator := (aValue :  Currency) :  ICurrency;
+  operator Explicit(aValue :  Currency) :  ICurrency;
+  operator Explicit(aValue :  ICurrency) :  Currency;
+  operator + (const Left : ICurrency;const right : ICurrency) :  Currency;
+  operator + (const Left : ICurrency;const right : Currency)  :  Currency;
+  operator + (const Left : Currency;const right : ICurrency)  :  Currency;
+  operator + (const Left : ICurrency;const right : ICurrency) :  ICurrency;
                              
 implementation
 Uses
@@ -37,42 +37,41 @@ type
   end;
 
 
-operator := (aValue: Currency)res: ICurrency;
+operator := (aValue: Currency)        : ICurrency;
 begin
   result := TCurrency.Create(aValue);
 end;
 
-operator Explicit(aValue: Currency)res: ICurrency;
+operator Explicit(aValue: Currency)    : ICurrency;
 begin
   result := TCurrency.Create(aValue);
 end;
 
-operator Explicit(aValue: ICurrency)res: Currency;
+operator Explicit(aValue: ICurrency)   : Currency;
 begin
   result := aValue.Value;
 end;
 
-operator+(const Left: ICurrency; const right: ICurrency) res: Currency;
+operator+(const Left: ICurrency; const right: ICurrency)    : Currency;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
-  res := left.value + right.value;
+  result := left.value + right.value;
 end;
-operator + (const Left : ICurrency;const right : ICurrency) res:  ICurrency;
+operator + (const Left : ICurrency;const right : ICurrency) :  ICurrency;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
-  res := left.value + right.value;
+  result := left.value + right.value;
 end;
 
-
-operator+(const Left: ICurrency; const right: Currency)res: Currency;
+operator+(const Left: ICurrency; const right: Currency)     : Currency;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
-  res := left.value + right;
+  result := left.value + right;
 end;
 
-operator+(const Left: Currency; const right: ICurrency)res: Currency;
+operator+(const Left: Currency; const right: ICurrency)     : Currency;
 begin
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
   result := left+ right.value;

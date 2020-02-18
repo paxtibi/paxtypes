@@ -8,7 +8,12 @@ unit paxtypes_package;
 interface
 
 uses
-  paxtypes, LazarusPackageIntf;
+  paxtypes, paxInterfaces, ByteType, CardinalType, CompType, CurrencyType, 
+  DoubleType, DWordType, ExtendedType, Int8Type, Int16Type, Int32Type, 
+  Int64Type, IntegerType, LongIntType, LongWordType, NativeIntType, 
+  NativeUIntType, QWordType, RealType, ShortIntType, SingleType, SmallIntType, 
+  UInt8Type, UInt16Type, UInt32Type, UInt64Type, WordType, StringType, 
+  LazarusPackageIntf;
 
 implementation
 

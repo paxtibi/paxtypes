@@ -1,7 +1,7 @@
 unit UInt64Type;
 interface
 uses
-  Interfaces, Classes, SysUtils;
+  paxInterfaces, Classes, SysUtils;
 type
   { IUInt64 }
 
@@ -11,13 +11,13 @@ type
     property value : UInt64 read Getvalue write Setvalue;
   end;
 
-  operator := (aValue :  UInt64) res:  IUInt64;
-  operator Explicit(aValue :  UInt64) res:  IUInt64;
-  operator Explicit(aValue :  IUInt64) res:  UInt64;
-  operator + (const Left : IUInt64;const right : IUInt64) res:  UInt64;
-  operator + (const Left : IUInt64;const right : UInt64) res:  UInt64;
-  operator + (const Left : UInt64;const right : IUInt64) res:  UInt64;
-  operator + (const Left : IUInt64;const right : IUInt64) res:  IUInt64;
+  operator := (aValue :  UInt64) :  IUInt64;
+  operator Explicit(aValue :  UInt64) :  IUInt64;
+  operator Explicit(aValue :  IUInt64) :  UInt64;
+  operator + (const Left : IUInt64;const right : IUInt64) :  UInt64;
+  operator + (const Left : IUInt64;const right : UInt64)  :  UInt64;
+  operator + (const Left : UInt64;const right : IUInt64)  :  UInt64;
+  operator + (const Left : IUInt64;const right : IUInt64) :  IUInt64;
                              
 implementation
 Uses
@@ -37,42 +37,41 @@ type
   end;
 
 
-operator := (aValue: UInt64)res: IUInt64;
+operator := (aValue: UInt64)        : IUInt64;
 begin
   result := TUInt64.Create(aValue);
 end;
 
-operator Explicit(aValue: UInt64)res: IUInt64;
+operator Explicit(aValue: UInt64)    : IUInt64;
 begin
   result := TUInt64.Create(aValue);
 end;
 
-operator Explicit(aValue: IUInt64)res: UInt64;
+operator Explicit(aValue: IUInt64)   : UInt64;
 begin
   result := aValue.Value;
 end;
 
-operator+(const Left: IUInt64; const right: IUInt64) res: UInt64;
+operator+(const Left: IUInt64; const right: IUInt64)    : UInt64;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
-  res := left.value + right.value;
+  result := left.value + right.value;
 end;
-operator + (const Left : IUInt64;const right : IUInt64) res:  IUInt64;
+operator + (const Left : IUInt64;const right : IUInt64) :  IUInt64;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
-  res := left.value + right.value;
+  result := left.value + right.value;
 end;
 
-
-operator+(const Left: IUInt64; const right: UInt64)res: UInt64;
+operator+(const Left: IUInt64; const right: UInt64)     : UInt64;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
-  res := left.value + right;
+  result := left.value + right;
 end;
 
-operator+(const Left: UInt64; const right: IUInt64)res: UInt64;
+operator+(const Left: UInt64; const right: IUInt64)     : UInt64;
 begin
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
   result := left+ right.value;

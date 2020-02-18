@@ -1,7 +1,7 @@
 unit LongIntType;
 interface
 uses
-  Interfaces, Classes, SysUtils;
+  paxInterfaces, Classes, SysUtils;
 type
   { ILongInt }
 
@@ -11,13 +11,13 @@ type
     property value : LongInt read Getvalue write Setvalue;
   end;
 
-  operator := (aValue :  LongInt) res:  ILongInt;
-  operator Explicit(aValue :  LongInt) res:  ILongInt;
-  operator Explicit(aValue :  ILongInt) res:  LongInt;
-  operator + (const Left : ILongInt;const right : ILongInt) res:  LongInt;
-  operator + (const Left : ILongInt;const right : LongInt) res:  LongInt;
-  operator + (const Left : LongInt;const right : ILongInt) res:  LongInt;
-  operator + (const Left : ILongInt;const right : ILongInt) res:  ILongInt;
+  operator := (aValue :  LongInt) :  ILongInt;
+  operator Explicit(aValue :  LongInt) :  ILongInt;
+  operator Explicit(aValue :  ILongInt) :  LongInt;
+  operator + (const Left : ILongInt;const right : ILongInt) :  LongInt;
+  operator + (const Left : ILongInt;const right : LongInt)  :  LongInt;
+  operator + (const Left : LongInt;const right : ILongInt)  :  LongInt;
+  operator + (const Left : ILongInt;const right : ILongInt) :  ILongInt;
                              
 implementation
 Uses
@@ -37,42 +37,41 @@ type
   end;
 
 
-operator := (aValue: LongInt)res: ILongInt;
+operator := (aValue: LongInt)        : ILongInt;
 begin
   result := TLongInt.Create(aValue);
 end;
 
-operator Explicit(aValue: LongInt)res: ILongInt;
+operator Explicit(aValue: LongInt)    : ILongInt;
 begin
   result := TLongInt.Create(aValue);
 end;
 
-operator Explicit(aValue: ILongInt)res: LongInt;
+operator Explicit(aValue: ILongInt)   : LongInt;
 begin
   result := aValue.Value;
 end;
 
-operator+(const Left: ILongInt; const right: ILongInt) res: LongInt;
+operator+(const Left: ILongInt; const right: ILongInt)    : LongInt;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
-  res := left.value + right.value;
+  result := left.value + right.value;
 end;
-operator + (const Left : ILongInt;const right : ILongInt) res:  ILongInt;
+operator + (const Left : ILongInt;const right : ILongInt) :  ILongInt;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
-  res := left.value + right.value;
+  result := left.value + right.value;
 end;
 
-
-operator+(const Left: ILongInt; const right: LongInt)res: LongInt;
+operator+(const Left: ILongInt; const right: LongInt)     : LongInt;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
-  res := left.value + right;
+  result := left.value + right;
 end;
 
-operator+(const Left: LongInt; const right: ILongInt)res: LongInt;
+operator+(const Left: LongInt; const right: ILongInt)     : LongInt;
 begin
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
   result := left+ right.value;

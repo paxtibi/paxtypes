@@ -1,7 +1,7 @@
 unit CompType;
 interface
 uses
-  Interfaces, Classes, SysUtils;
+  paxInterfaces, Classes, SysUtils;
 type
   { IComp }
 
@@ -11,13 +11,13 @@ type
     property value : Comp read Getvalue write Setvalue;
   end;
 
-  operator := (aValue :  Comp) res:  IComp;
-  operator Explicit(aValue :  Comp) res:  IComp;
-  operator Explicit(aValue :  IComp) res:  Comp;
-  operator + (const Left : IComp;const right : IComp) res:  Comp;
-  operator + (const Left : IComp;const right : Comp) res:  Comp;
-  operator + (const Left : Comp;const right : IComp) res:  Comp;
-  operator + (const Left : IComp;const right : IComp) res:  IComp;
+  operator := (aValue :  Comp) :  IComp;
+  operator Explicit(aValue :  Comp) :  IComp;
+  operator Explicit(aValue :  IComp) :  Comp;
+  operator + (const Left : IComp;const right : IComp) :  Comp;
+  operator + (const Left : IComp;const right : Comp)  :  Comp;
+  operator + (const Left : Comp;const right : IComp)  :  Comp;
+  operator + (const Left : IComp;const right : IComp) :  IComp;
                              
 implementation
 Uses
@@ -37,42 +37,41 @@ type
   end;
 
 
-operator := (aValue: Comp)res: IComp;
+operator := (aValue: Comp)        : IComp;
 begin
   result := TComp.Create(aValue);
 end;
 
-operator Explicit(aValue: Comp)res: IComp;
+operator Explicit(aValue: Comp)    : IComp;
 begin
   result := TComp.Create(aValue);
 end;
 
-operator Explicit(aValue: IComp)res: Comp;
+operator Explicit(aValue: IComp)   : Comp;
 begin
   result := aValue.Value;
 end;
 
-operator+(const Left: IComp; const right: IComp) res: Comp;
+operator+(const Left: IComp; const right: IComp)    : Comp;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
-  res := left.value + right.value;
+  result := left.value + right.value;
 end;
-operator + (const Left : IComp;const right : IComp) res:  IComp;
+operator + (const Left : IComp;const right : IComp) :  IComp;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
-  res := left.value + right.value;
+  result := left.value + right.value;
 end;
 
-
-operator+(const Left: IComp; const right: Comp)res: Comp;
+operator+(const Left: IComp; const right: Comp)     : Comp;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
-  res := left.value + right;
+  result := left.value + right;
 end;
 
-operator+(const Left: Comp; const right: IComp)res: Comp;
+operator+(const Left: Comp; const right: IComp)     : Comp;
 begin
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
   result := left+ right.value;

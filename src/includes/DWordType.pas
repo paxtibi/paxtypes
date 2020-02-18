@@ -1,7 +1,7 @@
 unit DWordType;
 interface
 uses
-  Interfaces, Classes, SysUtils;
+  paxInterfaces, Classes, SysUtils;
 type
   { IDWord }
 
@@ -11,13 +11,13 @@ type
     property value : DWord read Getvalue write Setvalue;
   end;
 
-  operator := (aValue :  DWord) res:  IDWord;
-  operator Explicit(aValue :  DWord) res:  IDWord;
-  operator Explicit(aValue :  IDWord) res:  DWord;
-  operator + (const Left : IDWord;const right : IDWord) res:  DWord;
-  operator + (const Left : IDWord;const right : DWord) res:  DWord;
-  operator + (const Left : DWord;const right : IDWord) res:  DWord;
-  operator + (const Left : IDWord;const right : IDWord) res:  IDWord;
+  operator := (aValue :  DWord) :  IDWord;
+  operator Explicit(aValue :  DWord) :  IDWord;
+  operator Explicit(aValue :  IDWord) :  DWord;
+  operator + (const Left : IDWord;const right : IDWord) :  DWord;
+  operator + (const Left : IDWord;const right : DWord)  :  DWord;
+  operator + (const Left : DWord;const right : IDWord)  :  DWord;
+  operator + (const Left : IDWord;const right : IDWord) :  IDWord;
                              
 implementation
 Uses
@@ -37,42 +37,41 @@ type
   end;
 
 
-operator := (aValue: DWord)res: IDWord;
+operator := (aValue: DWord)        : IDWord;
 begin
   result := TDWord.Create(aValue);
 end;
 
-operator Explicit(aValue: DWord)res: IDWord;
+operator Explicit(aValue: DWord)    : IDWord;
 begin
   result := TDWord.Create(aValue);
 end;
 
-operator Explicit(aValue: IDWord)res: DWord;
+operator Explicit(aValue: IDWord)   : DWord;
 begin
   result := aValue.Value;
 end;
 
-operator+(const Left: IDWord; const right: IDWord) res: DWord;
+operator+(const Left: IDWord; const right: IDWord)    : DWord;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
-  res := left.value + right.value;
+  result := left.value + right.value;
 end;
-operator + (const Left : IDWord;const right : IDWord) res:  IDWord;
+operator + (const Left : IDWord;const right : IDWord) :  IDWord;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
-  res := left.value + right.value;
+  result := left.value + right.value;
 end;
 
-
-operator+(const Left: IDWord; const right: DWord)res: DWord;
+operator+(const Left: IDWord; const right: DWord)     : DWord;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
-  res := left.value + right;
+  result := left.value + right;
 end;
 
-operator+(const Left: DWord; const right: IDWord)res: DWord;
+operator+(const Left: DWord; const right: IDWord)     : DWord;
 begin
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
   result := left+ right.value;

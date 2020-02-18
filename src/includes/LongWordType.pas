@@ -1,7 +1,7 @@
 unit LongWordType;
 interface
 uses
-  Interfaces, Classes, SysUtils;
+  paxInterfaces, Classes, SysUtils;
 type
   { ILongWord }
 
@@ -11,13 +11,13 @@ type
     property value : LongWord read Getvalue write Setvalue;
   end;
 
-  operator := (aValue :  LongWord) res:  ILongWord;
-  operator Explicit(aValue :  LongWord) res:  ILongWord;
-  operator Explicit(aValue :  ILongWord) res:  LongWord;
-  operator + (const Left : ILongWord;const right : ILongWord) res:  LongWord;
-  operator + (const Left : ILongWord;const right : LongWord) res:  LongWord;
-  operator + (const Left : LongWord;const right : ILongWord) res:  LongWord;
-  operator + (const Left : ILongWord;const right : ILongWord) res:  ILongWord;
+  operator := (aValue :  LongWord) :  ILongWord;
+  operator Explicit(aValue :  LongWord) :  ILongWord;
+  operator Explicit(aValue :  ILongWord) :  LongWord;
+  operator + (const Left : ILongWord;const right : ILongWord) :  LongWord;
+  operator + (const Left : ILongWord;const right : LongWord)  :  LongWord;
+  operator + (const Left : LongWord;const right : ILongWord)  :  LongWord;
+  operator + (const Left : ILongWord;const right : ILongWord) :  ILongWord;
                              
 implementation
 Uses
@@ -37,42 +37,41 @@ type
   end;
 
 
-operator := (aValue: LongWord)res: ILongWord;
+operator := (aValue: LongWord)        : ILongWord;
 begin
   result := TLongWord.Create(aValue);
 end;
 
-operator Explicit(aValue: LongWord)res: ILongWord;
+operator Explicit(aValue: LongWord)    : ILongWord;
 begin
   result := TLongWord.Create(aValue);
 end;
 
-operator Explicit(aValue: ILongWord)res: LongWord;
+operator Explicit(aValue: ILongWord)   : LongWord;
 begin
   result := aValue.Value;
 end;
 
-operator+(const Left: ILongWord; const right: ILongWord) res: LongWord;
+operator+(const Left: ILongWord; const right: ILongWord)    : LongWord;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
-  res := left.value + right.value;
+  result := left.value + right.value;
 end;
-operator + (const Left : ILongWord;const right : ILongWord) res:  ILongWord;
+operator + (const Left : ILongWord;const right : ILongWord) :  ILongWord;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
-  res := left.value + right.value;
+  result := left.value + right.value;
 end;
 
-
-operator+(const Left: ILongWord; const right: LongWord)res: LongWord;
+operator+(const Left: ILongWord; const right: LongWord)     : LongWord;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
-  res := left.value + right;
+  result := left.value + right;
 end;
 
-operator+(const Left: LongWord; const right: ILongWord)res: LongWord;
+operator+(const Left: LongWord; const right: ILongWord)     : LongWord;
 begin
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
   result := left+ right.value;

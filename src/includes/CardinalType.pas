@@ -1,7 +1,7 @@
 unit CardinalType;
 interface
 uses
-  Interfaces, Classes, SysUtils;
+  paxInterfaces, Classes, SysUtils;
 type
   { ICardinal }
 
@@ -11,13 +11,13 @@ type
     property value : Cardinal read Getvalue write Setvalue;
   end;
 
-  operator := (aValue :  Cardinal) res:  ICardinal;
-  operator Explicit(aValue :  Cardinal) res:  ICardinal;
-  operator Explicit(aValue :  ICardinal) res:  Cardinal;
-  operator + (const Left : ICardinal;const right : ICardinal) res:  Cardinal;
-  operator + (const Left : ICardinal;const right : Cardinal) res:  Cardinal;
-  operator + (const Left : Cardinal;const right : ICardinal) res:  Cardinal;
-  operator + (const Left : ICardinal;const right : ICardinal) res:  ICardinal;
+  operator := (aValue :  Cardinal) :  ICardinal;
+  operator Explicit(aValue :  Cardinal) :  ICardinal;
+  operator Explicit(aValue :  ICardinal) :  Cardinal;
+  operator + (const Left : ICardinal;const right : ICardinal) :  Cardinal;
+  operator + (const Left : ICardinal;const right : Cardinal)  :  Cardinal;
+  operator + (const Left : Cardinal;const right : ICardinal)  :  Cardinal;
+  operator + (const Left : ICardinal;const right : ICardinal) :  ICardinal;
                              
 implementation
 Uses
@@ -37,42 +37,41 @@ type
   end;
 
 
-operator := (aValue: Cardinal)res: ICardinal;
+operator := (aValue: Cardinal)        : ICardinal;
 begin
   result := TCardinal.Create(aValue);
 end;
 
-operator Explicit(aValue: Cardinal)res: ICardinal;
+operator Explicit(aValue: Cardinal)    : ICardinal;
 begin
   result := TCardinal.Create(aValue);
 end;
 
-operator Explicit(aValue: ICardinal)res: Cardinal;
+operator Explicit(aValue: ICardinal)   : Cardinal;
 begin
   result := aValue.Value;
 end;
 
-operator+(const Left: ICardinal; const right: ICardinal) res: Cardinal;
+operator+(const Left: ICardinal; const right: ICardinal)    : Cardinal;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
-  res := left.value + right.value;
+  result := left.value + right.value;
 end;
-operator + (const Left : ICardinal;const right : ICardinal) res:  ICardinal;
+operator + (const Left : ICardinal;const right : ICardinal) :  ICardinal;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
-  res := left.value + right.value;
+  result := left.value + right.value;
 end;
 
-
-operator+(const Left: ICardinal; const right: Cardinal)res: Cardinal;
+operator+(const Left: ICardinal; const right: Cardinal)     : Cardinal;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
-  res := left.value + right;
+  result := left.value + right;
 end;
 
-operator+(const Left: Cardinal; const right: ICardinal)res: Cardinal;
+operator+(const Left: Cardinal; const right: ICardinal)     : Cardinal;
 begin
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
   result := left+ right.value;

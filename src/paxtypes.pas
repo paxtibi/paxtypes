@@ -9,8 +9,9 @@ interface
 
 uses
   Classes, SysUtils,
-  interfaces,
-  Int8Type, UInt8Type, Int16Type, UInt16Type, Int32Type, UInt32Type, Int64Type, UInt64Type, ShortIntType, SmallIntType, IntegerType, NativeIntType, LongIntType, ByteType, WordType, NativeUIntType, DWordType, CardinalType, LongWordType, QWordType, SingleType, RealType, DoubleType, ExtendedType, CompType, CurrencyType;
+  paxInterfaces,
+  Int8Type, UInt8Type, Int16Type, UInt16Type, Int32Type, UInt32Type, Int64Type, UInt64Type, ShortIntType, SmallIntType, IntegerType, NativeIntType, LongIntType, ByteType, WordType, NativeUIntType, DWordType, CardinalType, LongWordType, QWordType, SingleType, RealType, DoubleType, ExtendedType, CompType, CurrencyType,
+  StringType;
 
 type
   TRadix     = 2..36;
@@ -40,6 +41,7 @@ type
   IExtended  = ExtendedType.IExtended;
   IComp      = CompType.IComp;
   ICurrency  = CurrencyType.ICurrency;
+  IString    = StringType.IString;
 
 
 type
@@ -47,8 +49,8 @@ type
 
   end;
 
-  ISerializable = interfaces.ISerializable;
-  ICloneable    = interfaces.IClonable;
+  ISerializable = paxInterfaces.ISerializable;
+  ICloneable    = paxInterfaces.IClonable;
 
 
 function itoa(Value: Uint64; radix: TRadix; maxLength: byte = 8): string;
@@ -62,7 +64,7 @@ function itoa(Value: Uint64; radix: TRadix; maxLength: byte): string;
 var
   resto: Uint64;
 const
-  dizionarioSimboli          : string = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  symbolDictionary          : string = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 begin
   Result := '';
   if Value = 0 then
@@ -70,15 +72,13 @@ begin
   while (Value > 0) do
   begin
     resto  := Value mod radix;
-    Result := dizionarioSimboli.Chars[resto] + Result;
+    Result := symbolDictionary.Chars[resto] + Result;
     Value  := Value div radix;
   end;
   if Result.Length > maxLength then
   begin
     Result := Result.Substring(Result.Length - maxLength);
-
   end;
-
 end;
 
 

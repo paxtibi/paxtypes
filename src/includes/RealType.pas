@@ -1,7 +1,7 @@
 unit RealType;
 interface
 uses
-  Interfaces, Classes, SysUtils;
+  paxInterfaces, Classes, SysUtils;
 type
   { IReal }
 
@@ -11,13 +11,13 @@ type
     property value : Real read Getvalue write Setvalue;
   end;
 
-  operator := (aValue :  Real) res:  IReal;
-  operator Explicit(aValue :  Real) res:  IReal;
-  operator Explicit(aValue :  IReal) res:  Real;
-  operator + (const Left : IReal;const right : IReal) res:  Real;
-  operator + (const Left : IReal;const right : Real) res:  Real;
-  operator + (const Left : Real;const right : IReal) res:  Real;
-  operator + (const Left : IReal;const right : IReal) res:  IReal;
+  operator := (aValue :  Real) :  IReal;
+  operator Explicit(aValue :  Real) :  IReal;
+  operator Explicit(aValue :  IReal) :  Real;
+  operator + (const Left : IReal;const right : IReal) :  Real;
+  operator + (const Left : IReal;const right : Real)  :  Real;
+  operator + (const Left : Real;const right : IReal)  :  Real;
+  operator + (const Left : IReal;const right : IReal) :  IReal;
                              
 implementation
 Uses
@@ -37,42 +37,41 @@ type
   end;
 
 
-operator := (aValue: Real)res: IReal;
+operator := (aValue: Real)        : IReal;
 begin
   result := TReal.Create(aValue);
 end;
 
-operator Explicit(aValue: Real)res: IReal;
+operator Explicit(aValue: Real)    : IReal;
 begin
   result := TReal.Create(aValue);
 end;
 
-operator Explicit(aValue: IReal)res: Real;
+operator Explicit(aValue: IReal)   : Real;
 begin
   result := aValue.Value;
 end;
 
-operator+(const Left: IReal; const right: IReal) res: Real;
+operator+(const Left: IReal; const right: IReal)    : Real;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
-  res := left.value + right.value;
+  result := left.value + right.value;
 end;
-operator + (const Left : IReal;const right : IReal) res:  IReal;
+operator + (const Left : IReal;const right : IReal) :  IReal;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
-  res := left.value + right.value;
+  result := left.value + right.value;
 end;
 
-
-operator+(const Left: IReal; const right: Real)res: Real;
+operator+(const Left: IReal; const right: Real)     : Real;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
-  res := left.value + right;
+  result := left.value + right;
 end;
 
-operator+(const Left: Real; const right: IReal)res: Real;
+operator+(const Left: Real; const right: IReal)     : Real;
 begin
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
   result := left+ right.value;

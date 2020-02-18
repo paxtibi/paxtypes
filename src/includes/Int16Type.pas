@@ -1,7 +1,7 @@
 unit Int16Type;
 interface
 uses
-  Interfaces, Classes, SysUtils;
+  paxInterfaces, Classes, SysUtils;
 type
   { IInt16 }
 
@@ -11,13 +11,13 @@ type
     property value : Int16 read Getvalue write Setvalue;
   end;
 
-  operator := (aValue :  Int16) res:  IInt16;
-  operator Explicit(aValue :  Int16) res:  IInt16;
-  operator Explicit(aValue :  IInt16) res:  Int16;
-  operator + (const Left : IInt16;const right : IInt16) res:  Int16;
-  operator + (const Left : IInt16;const right : Int16) res:  Int16;
-  operator + (const Left : Int16;const right : IInt16) res:  Int16;
-  operator + (const Left : IInt16;const right : IInt16) res:  IInt16;
+  operator := (aValue :  Int16) :  IInt16;
+  operator Explicit(aValue :  Int16) :  IInt16;
+  operator Explicit(aValue :  IInt16) :  Int16;
+  operator + (const Left : IInt16;const right : IInt16) :  Int16;
+  operator + (const Left : IInt16;const right : Int16)  :  Int16;
+  operator + (const Left : Int16;const right : IInt16)  :  Int16;
+  operator + (const Left : IInt16;const right : IInt16) :  IInt16;
                              
 implementation
 Uses
@@ -37,42 +37,41 @@ type
   end;
 
 
-operator := (aValue: Int16)res: IInt16;
+operator := (aValue: Int16)        : IInt16;
 begin
   result := TInt16.Create(aValue);
 end;
 
-operator Explicit(aValue: Int16)res: IInt16;
+operator Explicit(aValue: Int16)    : IInt16;
 begin
   result := TInt16.Create(aValue);
 end;
 
-operator Explicit(aValue: IInt16)res: Int16;
+operator Explicit(aValue: IInt16)   : Int16;
 begin
   result := aValue.Value;
 end;
 
-operator+(const Left: IInt16; const right: IInt16) res: Int16;
+operator+(const Left: IInt16; const right: IInt16)    : Int16;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
-  res := left.value + right.value;
+  result := left.value + right.value;
 end;
-operator + (const Left : IInt16;const right : IInt16) res:  IInt16;
+operator + (const Left : IInt16;const right : IInt16) :  IInt16;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
-  res := left.value + right.value;
+  result := left.value + right.value;
 end;
 
-
-operator+(const Left: IInt16; const right: Int16)res: Int16;
+operator+(const Left: IInt16; const right: Int16)     : Int16;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
-  res := left.value + right;
+  result := left.value + right;
 end;
 
-operator+(const Left: Int16; const right: IInt16)res: Int16;
+operator+(const Left: Int16; const right: IInt16)     : Int16;
 begin
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
   result := left+ right.value;

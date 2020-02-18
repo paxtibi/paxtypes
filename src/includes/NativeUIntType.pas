@@ -1,7 +1,7 @@
 unit NativeUIntType;
 interface
 uses
-  Interfaces, Classes, SysUtils;
+  paxInterfaces, Classes, SysUtils;
 type
   { INativeUInt }
 
@@ -11,13 +11,13 @@ type
     property value : NativeUInt read Getvalue write Setvalue;
   end;
 
-  operator := (aValue :  NativeUInt) res:  INativeUInt;
-  operator Explicit(aValue :  NativeUInt) res:  INativeUInt;
-  operator Explicit(aValue :  INativeUInt) res:  NativeUInt;
-  operator + (const Left : INativeUInt;const right : INativeUInt) res:  NativeUInt;
-  operator + (const Left : INativeUInt;const right : NativeUInt) res:  NativeUInt;
-  operator + (const Left : NativeUInt;const right : INativeUInt) res:  NativeUInt;
-  operator + (const Left : INativeUInt;const right : INativeUInt) res:  INativeUInt;
+  operator := (aValue :  NativeUInt) :  INativeUInt;
+  operator Explicit(aValue :  NativeUInt) :  INativeUInt;
+  operator Explicit(aValue :  INativeUInt) :  NativeUInt;
+  operator + (const Left : INativeUInt;const right : INativeUInt) :  NativeUInt;
+  operator + (const Left : INativeUInt;const right : NativeUInt)  :  NativeUInt;
+  operator + (const Left : NativeUInt;const right : INativeUInt)  :  NativeUInt;
+  operator + (const Left : INativeUInt;const right : INativeUInt) :  INativeUInt;
                              
 implementation
 Uses
@@ -37,42 +37,41 @@ type
   end;
 
 
-operator := (aValue: NativeUInt)res: INativeUInt;
+operator := (aValue: NativeUInt)        : INativeUInt;
 begin
   result := TNativeUInt.Create(aValue);
 end;
 
-operator Explicit(aValue: NativeUInt)res: INativeUInt;
+operator Explicit(aValue: NativeUInt)    : INativeUInt;
 begin
   result := TNativeUInt.Create(aValue);
 end;
 
-operator Explicit(aValue: INativeUInt)res: NativeUInt;
+operator Explicit(aValue: INativeUInt)   : NativeUInt;
 begin
   result := aValue.Value;
 end;
 
-operator+(const Left: INativeUInt; const right: INativeUInt) res: NativeUInt;
+operator+(const Left: INativeUInt; const right: INativeUInt)    : NativeUInt;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
-  res := left.value + right.value;
+  result := left.value + right.value;
 end;
-operator + (const Left : INativeUInt;const right : INativeUInt) res:  INativeUInt;
+operator + (const Left : INativeUInt;const right : INativeUInt) :  INativeUInt;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
-  res := left.value + right.value;
+  result := left.value + right.value;
 end;
 
-
-operator+(const Left: INativeUInt; const right: NativeUInt)res: NativeUInt;
+operator+(const Left: INativeUInt; const right: NativeUInt)     : NativeUInt;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
-  res := left.value + right;
+  result := left.value + right;
 end;
 
-operator+(const Left: NativeUInt; const right: INativeUInt)res: NativeUInt;
+operator+(const Left: NativeUInt; const right: INativeUInt)     : NativeUInt;
 begin
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
   result := left+ right.value;

@@ -1,7 +1,7 @@
 unit IntegerType;
 interface
 uses
-  Interfaces, Classes, SysUtils;
+  paxInterfaces, Classes, SysUtils;
 type
   { IInteger }
 
@@ -11,13 +11,13 @@ type
     property value : Integer read Getvalue write Setvalue;
   end;
 
-  operator := (aValue :  Integer) res:  IInteger;
-  operator Explicit(aValue :  Integer) res:  IInteger;
-  operator Explicit(aValue :  IInteger) res:  Integer;
-  operator + (const Left : IInteger;const right : IInteger) res:  Integer;
-  operator + (const Left : IInteger;const right : Integer) res:  Integer;
-  operator + (const Left : Integer;const right : IInteger) res:  Integer;
-  operator + (const Left : IInteger;const right : IInteger) res:  IInteger;
+  operator := (aValue :  Integer) :  IInteger;
+  operator Explicit(aValue :  Integer) :  IInteger;
+  operator Explicit(aValue :  IInteger) :  Integer;
+  operator + (const Left : IInteger;const right : IInteger) :  Integer;
+  operator + (const Left : IInteger;const right : Integer)  :  Integer;
+  operator + (const Left : Integer;const right : IInteger)  :  Integer;
+  operator + (const Left : IInteger;const right : IInteger) :  IInteger;
                              
 implementation
 Uses
@@ -37,42 +37,41 @@ type
   end;
 
 
-operator := (aValue: Integer)res: IInteger;
+operator := (aValue: Integer)        : IInteger;
 begin
   result := TInteger.Create(aValue);
 end;
 
-operator Explicit(aValue: Integer)res: IInteger;
+operator Explicit(aValue: Integer)    : IInteger;
 begin
   result := TInteger.Create(aValue);
 end;
 
-operator Explicit(aValue: IInteger)res: Integer;
+operator Explicit(aValue: IInteger)   : Integer;
 begin
   result := aValue.Value;
 end;
 
-operator+(const Left: IInteger; const right: IInteger) res: Integer;
+operator+(const Left: IInteger; const right: IInteger)    : Integer;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
-  res := left.value + right.value;
+  result := left.value + right.value;
 end;
-operator + (const Left : IInteger;const right : IInteger) res:  IInteger;
+operator + (const Left : IInteger;const right : IInteger) :  IInteger;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
-  res := left.value + right.value;
+  result := left.value + right.value;
 end;
 
-
-operator+(const Left: IInteger; const right: Integer)res: Integer;
+operator+(const Left: IInteger; const right: Integer)     : Integer;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
-  res := left.value + right;
+  result := left.value + right;
 end;
 
-operator+(const Left: Integer; const right: IInteger)res: Integer;
+operator+(const Left: Integer; const right: IInteger)     : Integer;
 begin
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
   result := left+ right.value;

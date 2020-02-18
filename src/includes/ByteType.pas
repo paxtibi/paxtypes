@@ -1,7 +1,7 @@
 unit ByteType;
 interface
 uses
-  Interfaces, Classes, SysUtils;
+  paxInterfaces, Classes, SysUtils;
 type
   { IByte }
 
@@ -11,13 +11,13 @@ type
     property value : Byte read Getvalue write Setvalue;
   end;
 
-  operator := (aValue :  Byte) res:  IByte;
-  operator Explicit(aValue :  Byte) res:  IByte;
-  operator Explicit(aValue :  IByte) res:  Byte;
-  operator + (const Left : IByte;const right : IByte) res:  Byte;
-  operator + (const Left : IByte;const right : Byte) res:  Byte;
-  operator + (const Left : Byte;const right : IByte) res:  Byte;
-  operator + (const Left : IByte;const right : IByte) res:  IByte;
+  operator := (aValue :  Byte) :  IByte;
+  operator Explicit(aValue :  Byte) :  IByte;
+  operator Explicit(aValue :  IByte) :  Byte;
+  operator + (const Left : IByte;const right : IByte) :  Byte;
+  operator + (const Left : IByte;const right : Byte)  :  Byte;
+  operator + (const Left : Byte;const right : IByte)  :  Byte;
+  operator + (const Left : IByte;const right : IByte) :  IByte;
                              
 implementation
 Uses
@@ -37,42 +37,41 @@ type
   end;
 
 
-operator := (aValue: Byte)res: IByte;
+operator := (aValue: Byte)        : IByte;
 begin
   result := TByte.Create(aValue);
 end;
 
-operator Explicit(aValue: Byte)res: IByte;
+operator Explicit(aValue: Byte)    : IByte;
 begin
   result := TByte.Create(aValue);
 end;
 
-operator Explicit(aValue: IByte)res: Byte;
+operator Explicit(aValue: IByte)   : Byte;
 begin
   result := aValue.Value;
 end;
 
-operator+(const Left: IByte; const right: IByte) res: Byte;
+operator+(const Left: IByte; const right: IByte)    : Byte;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
-  res := left.value + right.value;
+  result := left.value + right.value;
 end;
-operator + (const Left : IByte;const right : IByte) res:  IByte;
+operator + (const Left : IByte;const right : IByte) :  IByte;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
-  res := left.value + right.value;
+  result := left.value + right.value;
 end;
 
-
-operator+(const Left: IByte; const right: Byte)res: Byte;
+operator+(const Left: IByte; const right: Byte)     : Byte;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
-  res := left.value + right;
+  result := left.value + right;
 end;
 
-operator+(const Left: Byte; const right: IByte)res: Byte;
+operator+(const Left: Byte; const right: IByte)     : Byte;
 begin
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
   result := left+ right.value;

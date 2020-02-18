@@ -1,7 +1,7 @@
 unit ShortIntType;
 interface
 uses
-  Interfaces, Classes, SysUtils;
+  paxInterfaces, Classes, SysUtils;
 type
   { IShortInt }
 
@@ -11,13 +11,13 @@ type
     property value : ShortInt read Getvalue write Setvalue;
   end;
 
-  operator := (aValue :  ShortInt) res:  IShortInt;
-  operator Explicit(aValue :  ShortInt) res:  IShortInt;
-  operator Explicit(aValue :  IShortInt) res:  ShortInt;
-  operator + (const Left : IShortInt;const right : IShortInt) res:  ShortInt;
-  operator + (const Left : IShortInt;const right : ShortInt) res:  ShortInt;
-  operator + (const Left : ShortInt;const right : IShortInt) res:  ShortInt;
-  operator + (const Left : IShortInt;const right : IShortInt) res:  IShortInt;
+  operator := (aValue :  ShortInt) :  IShortInt;
+  operator Explicit(aValue :  ShortInt) :  IShortInt;
+  operator Explicit(aValue :  IShortInt) :  ShortInt;
+  operator + (const Left : IShortInt;const right : IShortInt) :  ShortInt;
+  operator + (const Left : IShortInt;const right : ShortInt)  :  ShortInt;
+  operator + (const Left : ShortInt;const right : IShortInt)  :  ShortInt;
+  operator + (const Left : IShortInt;const right : IShortInt) :  IShortInt;
                              
 implementation
 Uses
@@ -37,42 +37,41 @@ type
   end;
 
 
-operator := (aValue: ShortInt)res: IShortInt;
+operator := (aValue: ShortInt)        : IShortInt;
 begin
   result := TShortInt.Create(aValue);
 end;
 
-operator Explicit(aValue: ShortInt)res: IShortInt;
+operator Explicit(aValue: ShortInt)    : IShortInt;
 begin
   result := TShortInt.Create(aValue);
 end;
 
-operator Explicit(aValue: IShortInt)res: ShortInt;
+operator Explicit(aValue: IShortInt)   : ShortInt;
 begin
   result := aValue.Value;
 end;
 
-operator+(const Left: IShortInt; const right: IShortInt) res: ShortInt;
+operator+(const Left: IShortInt; const right: IShortInt)    : ShortInt;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
-  res := left.value + right.value;
+  result := left.value + right.value;
 end;
-operator + (const Left : IShortInt;const right : IShortInt) res:  IShortInt;
+operator + (const Left : IShortInt;const right : IShortInt) :  IShortInt;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
-  res := left.value + right.value;
+  result := left.value + right.value;
 end;
 
-
-operator+(const Left: IShortInt; const right: ShortInt)res: ShortInt;
+operator+(const Left: IShortInt; const right: ShortInt)     : ShortInt;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
-  res := left.value + right;
+  result := left.value + right;
 end;
 
-operator+(const Left: ShortInt; const right: IShortInt)res: ShortInt;
+operator+(const Left: ShortInt; const right: IShortInt)     : ShortInt;
 begin
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
   result := left+ right.value;

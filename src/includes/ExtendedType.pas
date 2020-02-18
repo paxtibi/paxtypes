@@ -1,7 +1,7 @@
 unit ExtendedType;
 interface
 uses
-  Interfaces, Classes, SysUtils;
+  paxInterfaces, Classes, SysUtils;
 type
   { IExtended }
 
@@ -11,13 +11,13 @@ type
     property value : Extended read Getvalue write Setvalue;
   end;
 
-  operator := (aValue :  Extended) res:  IExtended;
-  operator Explicit(aValue :  Extended) res:  IExtended;
-  operator Explicit(aValue :  IExtended) res:  Extended;
-  operator + (const Left : IExtended;const right : IExtended) res:  Extended;
-  operator + (const Left : IExtended;const right : Extended) res:  Extended;
-  operator + (const Left : Extended;const right : IExtended) res:  Extended;
-  operator + (const Left : IExtended;const right : IExtended) res:  IExtended;
+  operator := (aValue :  Extended) :  IExtended;
+  operator Explicit(aValue :  Extended) :  IExtended;
+  operator Explicit(aValue :  IExtended) :  Extended;
+  operator + (const Left : IExtended;const right : IExtended) :  Extended;
+  operator + (const Left : IExtended;const right : Extended)  :  Extended;
+  operator + (const Left : Extended;const right : IExtended)  :  Extended;
+  operator + (const Left : IExtended;const right : IExtended) :  IExtended;
                              
 implementation
 Uses
@@ -37,42 +37,41 @@ type
   end;
 
 
-operator := (aValue: Extended)res: IExtended;
+operator := (aValue: Extended)        : IExtended;
 begin
   result := TExtended.Create(aValue);
 end;
 
-operator Explicit(aValue: Extended)res: IExtended;
+operator Explicit(aValue: Extended)    : IExtended;
 begin
   result := TExtended.Create(aValue);
 end;
 
-operator Explicit(aValue: IExtended)res: Extended;
+operator Explicit(aValue: IExtended)   : Extended;
 begin
   result := aValue.Value;
 end;
 
-operator+(const Left: IExtended; const right: IExtended) res: Extended;
+operator+(const Left: IExtended; const right: IExtended)    : Extended;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
-  res := left.value + right.value;
+  result := left.value + right.value;
 end;
-operator + (const Left : IExtended;const right : IExtended) res:  IExtended;
+operator + (const Left : IExtended;const right : IExtended) :  IExtended;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
-  res := left.value + right.value;
+  result := left.value + right.value;
 end;
 
-
-operator+(const Left: IExtended; const right: Extended)res: Extended;
+operator+(const Left: IExtended; const right: Extended)     : Extended;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
-  res := left.value + right;
+  result := left.value + right;
 end;
 
-operator+(const Left: Extended; const right: IExtended)res: Extended;
+operator+(const Left: Extended; const right: IExtended)     : Extended;
 begin
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
   result := left+ right.value;

@@ -1,7 +1,7 @@
 unit SingleType;
 interface
 uses
-  Interfaces, Classes, SysUtils;
+  paxInterfaces, Classes, SysUtils;
 type
   { ISingle }
 
@@ -11,13 +11,13 @@ type
     property value : Single read Getvalue write Setvalue;
   end;
 
-  operator := (aValue :  Single) res:  ISingle;
-  operator Explicit(aValue :  Single) res:  ISingle;
-  operator Explicit(aValue :  ISingle) res:  Single;
-  operator + (const Left : ISingle;const right : ISingle) res:  Single;
-  operator + (const Left : ISingle;const right : Single) res:  Single;
-  operator + (const Left : Single;const right : ISingle) res:  Single;
-  operator + (const Left : ISingle;const right : ISingle) res:  ISingle;
+  operator := (aValue :  Single) :  ISingle;
+  operator Explicit(aValue :  Single) :  ISingle;
+  operator Explicit(aValue :  ISingle) :  Single;
+  operator + (const Left : ISingle;const right : ISingle) :  Single;
+  operator + (const Left : ISingle;const right : Single)  :  Single;
+  operator + (const Left : Single;const right : ISingle)  :  Single;
+  operator + (const Left : ISingle;const right : ISingle) :  ISingle;
                              
 implementation
 Uses
@@ -37,42 +37,41 @@ type
   end;
 
 
-operator := (aValue: Single)res: ISingle;
+operator := (aValue: Single)        : ISingle;
 begin
   result := TSingle.Create(aValue);
 end;
 
-operator Explicit(aValue: Single)res: ISingle;
+operator Explicit(aValue: Single)    : ISingle;
 begin
   result := TSingle.Create(aValue);
 end;
 
-operator Explicit(aValue: ISingle)res: Single;
+operator Explicit(aValue: ISingle)   : Single;
 begin
   result := aValue.Value;
 end;
 
-operator+(const Left: ISingle; const right: ISingle) res: Single;
+operator+(const Left: ISingle; const right: ISingle)    : Single;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
-  res := left.value + right.value;
+  result := left.value + right.value;
 end;
-operator + (const Left : ISingle;const right : ISingle) res:  ISingle;
+operator + (const Left : ISingle;const right : ISingle) :  ISingle;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
-  res := left.value + right.value;
+  result := left.value + right.value;
 end;
 
-
-operator+(const Left: ISingle; const right: Single)res: Single;
+operator+(const Left: ISingle; const right: Single)     : Single;
 begin
   if not assigned(left) then Raise ENullPointerException.Create('Addition :Left parameter is nil');
-  res := left.value + right;
+  result := left.value + right;
 end;
 
-operator+(const Left: Single; const right: ISingle)res: Single;
+operator+(const Left: Single; const right: ISingle)     : Single;
 begin
   if not assigned(right)then Raise ENullPointerException.Create('Addition :Right parameter is nil');
   result := left+ right.value;
