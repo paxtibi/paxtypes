@@ -22,6 +22,7 @@ type
 const
   GUID_SERIABLIZABLE = '{EB60281C-A16C-42CD-A376-DC66ED0CFE54}';
   GUID_CLONABLE  = '{F842EFD5-76AA-4128-97B1-9F8D344F0499}';
+  GUID_RUNNABLE  = '{C94063EA-987B-4A92-BC15-4DFDA93EE1A6}';
   GUID_Boolean   = '{C4AABCF7-5F46-43F5-A36E-498D3FD146F0}';
   GUID_Int8      = '{F820A271-FD40-4D15-B287-3864622D45A3}';
   GUID_UInt8     = '{AA8F9E77-C879-4352-ABD9-25F1FA0B359A}';
@@ -63,6 +64,12 @@ type
 
   IClonable = interface
     [GUID_CLONABLE]
+  end;
+
+
+  IRunnable = interface
+    [GUID_RUNNABLE]
+    procedure run;
   end;
 
 {$include BooleanTypeDec.inc}
