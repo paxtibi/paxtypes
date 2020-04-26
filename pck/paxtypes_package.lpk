@@ -10,7 +10,7 @@
       <SearchPaths>
         <IncludeFiles Value="$(ProjOutDir);..\src\includes"/>
         <OtherUnitFiles Value="..\src;..\src\includes"/>
-        <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+        <UnitOutputDirectory Value="..\lib\$(TargetCPU)-$(TargetOS)\fpc-$(FPC_FULLVERSION)"/>
       </SearchPaths>
     </CompilerOptions>
     <Files Count="1">
